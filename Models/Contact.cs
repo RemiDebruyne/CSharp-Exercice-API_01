@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
@@ -7,42 +8,58 @@ namespace Exercice_API_01.Models
 
 
 {
-    public class Contact
+    public class Contact : BaseModel
     {
-        private int _id;
-        [RegularExpression(@"^[A-Z].")]
-        private string _firstName;
+        [Required]
+        [RegularExpression(@"^[A-Z].*")]
+        [Column("First_name")]
+        public string FirstName { get; set; }
 
-        [RegularExpression(@"^[A-Z\-]*")]
-        
-        private string _lastName;
+        [Required]
+        [RegularExpression(@"^[A-Z].*")]
+        [Column("Last_name")]
+        public string LastName { get; set; }
 
-        private readonly string? _fullName;
 
-        private readonly int _age;
+        public string? FullName => FirstName + " " + LastName;
 
-        private bool _isMale;
 
-        private string _birthDate;
+        public int Age
+        {
+            get
+            {
+                DateTime currentDate = DateTime.Today;
+                int age = currentDate.Year - BirthDate.Year;
 
-        public int Id { get => _id; set => _id = value; }
+                // Vérifier si l'anniversaire de cette année est déjà passé
+                if (BirthDate > currentDate.AddYears(-age))
+                {
+                    age--;
+                }
 
-        [NotNull]
-        public string FirstName { get => _firstName; set => _firstName = value; }
-
-        public string LastName { get => _lastName; set => _lastName = value; }
-        public string FullName => _fullName;
-        public int Age => _age;
-        public bool IsMale { get => _isMale; set => _isMale = value; }
+                return age;
+            }
+        }
 
         [DataType(DataType.DateTime)]
-        public string BirthDate { get => _birthDate; set => _birthDate = value; }
+        [Required]
+        public DateTime BirthDate { get; set; }
+        [Required]
+        public string Gender { get; set; }
 
 
-        public Contact()
-        {
-            _fullName = FirstName + " " + LastName;
-            //_age = Date d'aujourdhui - Date de naissance
-        }
+        //static int GetAge(DateTime birthDate)
+        //{
+        //    DateTime currentDate = DateTime.Today;
+        //    int age = currentDate.Year - birthDate.Year;
+
+        //    // Vérifier si l'anniversaire de cette année est déjà passé
+        //    if (birthDate > currentDate.AddYears(-age))
+        //    {
+        //        age--;
+        //    }
+
+        //    return age;
+        //}
     }
 }
