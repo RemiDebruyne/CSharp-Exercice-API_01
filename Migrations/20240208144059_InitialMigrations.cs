@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Exercice_API_01.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace Exercice_API_01.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     First_name = table.Column<string>(type: "nvarchar(max)", nullable: false, collation: "Latin1_General_CI_AI"),
                     Last_name = table.Column<string>(type: "nvarchar(max)", nullable: false, collation: "Latin1_General_CI_AI"),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -27,13 +28,13 @@ namespace Exercice_API_01.Migrations
 
             migrationBuilder.InsertData(
                 table: "Contacts",
-                columns: new[] { "Id", "BirthDate", "First_name", "Gender", "Last_name" },
+                columns: new[] { "Id", "BirthDate", "First_name", "Gender", "Last_name", "Password" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1999, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rémi", "Homme", "Debruyne" },
-                    { 2, new DateTime(1983, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Manu", "Homme", "Max" },
-                    { 3, new DateTime(325, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jean", "Robot", "Bon" },
-                    { 4, new DateTime(122, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jaina", "Femme", "Portvaillant" }
+                    { 1, new DateTime(1999, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rémi", "Homme", "Debruyne", "sqdgge786dFNYUEI" },
+                    { 2, new DateTime(1983, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Manu", "Homme", "Max", "bhqdpgre2452uigpzesdfe" },
+                    { 3, new DateTime(325, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jean", "Robot", "Bon", "fghqriuopfghE452HOFUR5Y8UHGHVV" },
+                    { 4, new DateTime(122, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jaina", "Femme", "Portvaillant", "fkggAZEq451g4r1g4sq" }
                 });
         }
 

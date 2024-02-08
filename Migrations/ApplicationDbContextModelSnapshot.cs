@@ -49,6 +49,10 @@ namespace Exercice_API_01.Migrations
                         .HasColumnName("Last_name")
                         .UseCollation("Latin1_General_CI_AI");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
@@ -60,7 +64,8 @@ namespace Exercice_API_01.Migrations
                             BirthDate = new DateTime(1999, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Rémi",
                             Gender = "Homme",
-                            LastName = "Debruyne"
+                            LastName = "Debruyne",
+                            Password = "sqdgge786dFNYUEI"
                         },
                         new
                         {
@@ -68,7 +73,8 @@ namespace Exercice_API_01.Migrations
                             BirthDate = new DateTime(1983, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Manu",
                             Gender = "Homme",
-                            LastName = "Max"
+                            LastName = "Max",
+                            Password = "bhqdpgre2452uigpzesdfe"
                         },
                         new
                         {
@@ -76,7 +82,8 @@ namespace Exercice_API_01.Migrations
                             BirthDate = new DateTime(325, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Jean",
                             Gender = "Robot",
-                            LastName = "Bon"
+                            LastName = "Bon",
+                            Password = "fghqriuopfghE452HOFUR5Y8UHGHVV"
                         },
                         new
                         {
@@ -84,7 +91,8 @@ namespace Exercice_API_01.Migrations
                             BirthDate = new DateTime(122, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Jaina",
                             Gender = "Femme",
-                            LastName = "Portvaillant"
+                            LastName = "Portvaillant",
+                            Password = "fkggAZEq451g4r1g4sq"
                         });
                 });
 #pragma warning restore 612, 618

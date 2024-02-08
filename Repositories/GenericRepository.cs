@@ -24,7 +24,7 @@ namespace Exercice_API_01.Repositories
 
         public bool Delete(int id)
         {
-            var entity = GetById(id);
+            var entity = Get(e => e.Id == id);
             if (entity == null)
                 return false;
 
@@ -47,11 +47,11 @@ namespace Exercice_API_01.Repositories
         public bool Update(T entity)
         {
 
-            var entityFromDb = GetById(entity.Id);
+            var entityFromDb = Get(e => e.Id == entity.Id );
 
-            Type typeCategorie = entity.GetType();
+            Type typeContact = entity.GetType();
 
-            foreach (PropertyInfo property in typeCategorie.GetProperties())
+            foreach (PropertyInfo property in typeContact.GetProperties())
             {
                 var valeurPropriete = property.GetValue(entity, null);
                 var valeurProprieteFromDb = property.GetValue(entityFromDb, null);
